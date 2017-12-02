@@ -7,10 +7,10 @@
 GET        /                                   controllers.HomeController.index()
 
 GET        /java/comet                         controllers.JavaCometController.index()
-GET        /java/comet/liveClock               controllers.JavaCometController.streamClock()
+GET        /java/comet/liveClock/:uid          controllers.JavaCometController.streamClock(uid: Integer)
 
 GET        /java/eventSource                   controllers.JavaEventSourceController.index()
-GET        /java/eventSource/liveClock         controllers.JavaEventSourceController.streamClock()
+GET        /java/eventSource/liveClock/:uid    controllers.JavaEventSourceController.streamClock(uid: Integer)
 
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file                       controllers.Assets.at(path="/public", file)

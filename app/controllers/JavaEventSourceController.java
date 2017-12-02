@@ -18,8 +18,8 @@ public class JavaEventSourceController extends Controller implements JavaTicker 
         return ok(views.html.javaeventsource.render());
     }
 
-    public Result streamClock() {
-        final Source<EventSource.Event, ?> eventSource = getStringSource().map(EventSource.Event::event);
+    public Result streamClock(Integer uid) {
+        final Source<EventSource.Event, ?> eventSource = getStringSource(uid).map(EventSource.Event::event);
         return ok().chunked(eventSource.via(EventSource.flow())).as(Http.MimeTypes.EVENT_STREAM);
     }
 

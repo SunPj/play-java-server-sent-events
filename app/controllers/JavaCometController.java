@@ -17,8 +17,8 @@ public class JavaCometController extends Controller implements JavaTicker {
         return ok(views.html.javacomet.render());
     }
 
-    public Result streamClock() {
-        return ok().chunked(getStringSource().via(Comet.string("parent.clockChanged"))).as(Http.MimeTypes.HTML);
+    public Result streamClock(Integer uid) {
+        return ok().chunked(getStringSource(uid).via(Comet.string("parent.clockChanged"))).as(Http.MimeTypes.HTML);
     }
 
     public Result jsonClock() {

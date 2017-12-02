@@ -18,10 +18,10 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 
 public interface JavaTicker {
 
-    default Source<String, ?> getStringSource() {
+    default Source<String, ?> getStringSource(Integer uid) {
         final DateTimeFormatter df = DateTimeFormatter.ofPattern("HH mm ss");
         final Source<String, Cancellable> tickSource = Source.tick(Duration.Zero(), Duration.create(100, MILLISECONDS), "TICK");
-        return tickSource.map((tick) -> df.format(ZonedDateTime.now()));
+        return tickSource.map((tick) -> "user: " + uid + ", time" + df.format(ZonedDateTime.now()));
     }
 
     default Source<JsonNode, ?> getJsonSource() {
