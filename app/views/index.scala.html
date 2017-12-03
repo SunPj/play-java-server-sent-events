@@ -1,15 +1,19 @@
 @()
 
-@main {
+<!DOCTYPE html>
 
-    <h2>Comet Clock</h2>
-    <div>
-        <div><a href="@routes.JavaCometController.index()">Java Comet</a></div>
-    </div>
+<html>
+    <head>
+        <title>EventSource</title>
+    </head>
+    <body>
+        To post message use example link shown below where <em>msg</em> param that is eq to 123 is a new message that will be posted as new event to event source
+        <em>uid</em> is user id<br/>
+        <code>/java/eventSource/post?msg=123&uid=456</code>
 
-
-    <h2>Server Sent Event Clock</h2>
-    <div>
-        <div><a href="@routes.JavaEventSourceController.index()">Java EventSource</a></div>
-    </div>
-}
+        <br/>
+        <br/>
+        To read events from eventSource use link below where <em>123</em> is user id <br/>
+        <code>/java/eventSource/live/123</code>
+    </body>
+</html>
